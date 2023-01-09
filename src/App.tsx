@@ -3,9 +3,9 @@ import {
   ThemeOptions,
   createTheme,
 } from "@mui/material";
-import { ToastContainer } from "react-toastify";
 import { DefaultTheme, ThemeProvider } from "styled-components";
 
+import { ToastContainerCustom } from "./components/Toasts";
 import { MyRoutes } from "./routes";
 import { GlobalStyle } from "./styles/Global";
 import theme from "./styles/theme";
@@ -16,7 +16,7 @@ function App() {
       <ThemeMaterial theme={createTheme(theme as ThemeOptions)}>
         <GlobalStyle />
         <MyRoutes />
-        <ToastContainer autoClose={3000} />
+        <ToastContainerCustom />
       </ThemeMaterial>
     </ThemeProvider>
   );

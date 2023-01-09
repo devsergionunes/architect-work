@@ -1,13 +1,16 @@
 import styled, { css } from "styled-components";
 
 export const conteiner = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  ${({ theme }) => css`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    background-color: ${theme.background.default};
+  `}
 `;
 
 export const Image = styled.img`

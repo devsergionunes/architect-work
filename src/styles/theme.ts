@@ -15,11 +15,11 @@ export default {
     disabled: "rgba(0, 0, 0, 0.38)",
   },
   palette: {
-    mode: "light",
+    mode: "dark",
     primary: {
-      main: "#751f23",
-      light: "#751f23",
-      dark: "#751f23",
+      main: "#8257e5",
+      light: "#8257e5",
+      dark: "#8257e5",
     },
     secondary: {
       main: "#7d6b86",

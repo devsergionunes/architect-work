@@ -7,7 +7,7 @@ export function NotFound() {
   return (
     <S.conteiner>
       <S.Image src="/images/404.svg" alt="Ilustração de erro 404" />
-      <S.LinkHome onClick={() => navegation("/")}>Voltar para home</S.LinkHome>
+      <S.LinkHome onClick={() => navegation("/")}>Voltar</S.LinkHome>
     </S.conteiner>
   );
 }
