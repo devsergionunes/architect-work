@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Grid } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Grid, IconButton, Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 
-import { ButtonPrimary } from "../../components/base/Buttons";
+import { ButtonPrimary, ButtonSecondary } from "../../components/base/Buttons";
 import * as T from "../../components/base/Text";
 import { MenuLeft } from "../../components/Menu";
 import { ModalUpdateSolicitation } from "../../components/ModalsComponents/UpdateSolicitation";
@@ -38,6 +39,48 @@ export function SolicitationsPage() {
     }
   };
 
+  const handleDeleteSolicitation = async (id: string) => {
+    try {
+      await api.delete(`solicitation/${id}`);
+      dispatch(
+        setToastMessage({
+          type: "success",
+          message: "Solicitação excluída com sucesso",
+        })
+      );
+      getListSolicitations();
+
+      return;
+    } catch (err: any) {
+      const error = err.response.data;
+      dispatch(setToastMessage({ type: "error", message: error.message }));
+    }
+  };
+
+  const hendleUpdateStatusSolicitation = async (
+    idSolicitation: string,
+    status: number
+  ) => {
+    try {
+      await api.put(`solicitation/${idSolicitation}`, {
+        status,
+      });
+      dispatch(
+        setToastMessage({
+          type: "success",
+          message:
+            status === 1
+              ? "Solicitação aceita com sucesso"
+              : "Solicitação rejeitada com sucesso",
+        })
+      );
+      getListSolicitations();
+    } catch (err: any) {
+      const error = err.response.data;
+      dispatch(setToastMessage({ type: "error", message: error.message }));
+    }
+  };
+
   useEffect(() => {
     getListSolicitations();
   }, []);
@@ -54,8 +97,24 @@ export function SolicitationsPage() {
             ? solicitationList.map((sol) => (
                 <S.Item key={sol.id}>
                   <Grid container spacing={1}>
-                    <Grid item xs={12} sm={12}>
+                    <Grid item xs={11} sm={11}>
                       <T.H3>{sol.user.name}</T.H3>
+                    </Grid>
+                    <Grid
+                      item
+                      xs={1}
+                      sm={1}
+                      display="flex"
+                      alignItems="flex-end"
+                      justifyContent="flex-end"
+                    >
+                      <Tooltip title="Excluir">
+                        <IconButton
+                          onClick={() => handleDeleteSolicitation(sol.id)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </Tooltip>
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <T.Paragraph>
@@ -86,6 +145,32 @@ export function SolicitationsPage() {
                           }}
                         >
                           Atualiza Solicitação
+                        </ButtonPrimary>
+                      </Grid>
+                    )}
+                    {sol.status === 1 && user.typeProfile === 2 && (
+                      <Grid
+                        item
+                        xs={12}
+                        sm={12}
+                        display="flex"
+                        alignItems="flex-end"
+                        justifyContent="flex-end"
+                        gap={2}
+                      >
+                        <ButtonSecondary
+                          onClick={() =>
+                            hendleUpdateStatusSolicitation(sol.id, 3)
+                          }
+                        >
+                          Recusar
+                        </ButtonSecondary>
+                        <ButtonPrimary
+                          onClick={() =>
+                            hendleUpdateStatusSolicitation(sol.id, 2)
+                          }
+                        >
+                          Aceitar
                         </ButtonPrimary>
                       </Grid>
                     )}
