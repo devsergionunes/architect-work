@@ -12,6 +12,7 @@ import { HomePage } from "./pages/Home";
 import { LoginPage } from "./pages/Login";
 import { NotFound } from "./pages/NotFound";
 import { RegisterPage } from "./pages/Register";
+import { SolicitationsPage } from "./pages/Solicitations";
 import { api } from "./services/api";
 import { isAuthenticated, logout } from "./services/auth";
 import { setUserAction } from "./store/ducks/User/actions";
@@ -61,6 +62,14 @@ export function MyRoutes() {
           element={
             <Private>
               <ArchitectsPage />
+            </Private>
+          }
+        />
+        <Route
+          path="/solicitations"
+          element={
+            <Private>
+              <SolicitationsPage />
             </Private>
           }
         />
