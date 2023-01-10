@@ -48,7 +48,7 @@ export function RegisterPage() {
         ...(isArchitect && { description, type }),
       };
 
-      const response = await api.post("users", body);
+      const response = await api.post("user", body);
       if (response.status === 201) {
         dispatch(
           setToastMessage({
