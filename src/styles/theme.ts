@@ -10,7 +10,7 @@ export default {
     light: "#ccc",
   },
   text: {
-    primary: "#fbfbfb",
+    primary: "#f0f0f0",
     secondary: "rgba(0, 0, 0, 0.54)",
     disabled: "rgba(0, 0, 0, 0.38)",
   },

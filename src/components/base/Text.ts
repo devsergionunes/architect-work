@@ -149,7 +149,7 @@ export const Paragraph = styled.p<StyledProps>`
     max-width: ${maxWidth || "100%"};
     font-size: ${size || theme.typography.body1.fontSize};
     font-weight: ${weight || theme.typography.body1.fontWeightMedium};
-    color: ${color || theme.text.secondary};
+    color: ${color || theme.text.primary};
     text-align: ${textAlign || "left"};
     margin: ${margin || "0.25rem 0"};
     line-height: ${lineHeight || "initial"};

@@ -18,8 +18,28 @@ export const Container = styled.main`
 export const Content = styled.div`
   flex: 1;
   min-height: 100vh;
-  padding-bottom: 2rem;
+  padding: 3rem;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+`;
+
+export const ContainerList = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  margin: 2rem auto;
+  /* overflow-y: auto; */
+`;
+
+export const Item = styled.div`
+  ${({ theme }) => css`
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    background-color: ${theme.background.paper};
+    cursor: pointer;
+  `}
 `;

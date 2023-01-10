@@ -18,7 +18,7 @@ export const Container = styled.main`
 export const Content = styled.div`
   flex: 1;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 3rem;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
