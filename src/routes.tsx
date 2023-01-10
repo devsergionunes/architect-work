@@ -7,6 +7,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 
+import { ArchitectsPage } from "./pages/Architects";
 import { HomePage } from "./pages/Home";
 import { LoginPage } from "./pages/Login";
 import { NotFound } from "./pages/NotFound";
@@ -52,6 +53,14 @@ export function MyRoutes() {
           element={
             <Private>
               <HomePage />
+            </Private>
+          }
+        />
+        <Route
+          path="/architects"
+          element={
+            <Private>
+              <ArchitectsPage />
             </Private>
           }
         />
